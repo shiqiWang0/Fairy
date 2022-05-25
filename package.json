@@ -13,12 +13,18 @@
     "@typescript-eslint/parser": "^5.26.0",
     "eslint": "^8.16.0",
     "eslint-plugin-react": "^7.30.0",
-    "husky": "^8.0.1"
+    "husky": "^8.0.1",
+    "inquirer": "^8.2.4",
+    "ora": "^6.1.0",
+    "webpack": "^5.72.1"
   },
   "description": "",
   "dependencies": {
+    "axios": "^0.27.2",
     "commander": "^9.2.0",
-    "express": "^4.18.1"
+    "download-git-repo": "^3.0.2",
+    "express": "^4.18.1",
+    "node-fetch": "^2.6.1"
   },
   "bin": {
     "fairy-cli": "./bin/www"

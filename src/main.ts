@@ -1,4 +1,5 @@
 const program = require('commander');
+const path = require('path')
 const { version } = require('./utils/constants.ts');
 const { mapActions } = require('./utils/common.ts');
 
@@ -10,10 +11,9 @@ Reflect.ownKeys(mapActions).forEach((action) => {
                      if (action === '*') {  //访问不到对应的命令 就打印找不到命令
                             console.log(mapActions[action].description);
                      } else {
-                            console.log(action);
                             // 分解命令 到文件里 有多少文件 就有多少配置 create config
                             // fairy-cli create project-name ->[node,fairy-cli,create,project-name]
-                            console.log(process.argv);
+                            require(path.join(__dirname,`${String(action)}.ts`))(...process.argv.slice(3));
                      }
               })
 });
@@ -27,7 +27,6 @@ program.on('--help', () => {
               })
        })
 })
-
 
 program.version(version)
        .parse(process.argv); // process.argv就是用户在命令行中传入的参数
