@@ -2,6 +2,7 @@ const program = require('commander');
 const path = require('path')
 const { version } = require('./utils/constants.ts');
 const { mapActions } = require('./utils/common.ts');
+const { green, blue, yellow, red } = require('./utils/color.ts')
 
 Reflect.ownKeys(mapActions).forEach((action) => {
        program.command(action) //配置命令的名字
@@ -11,9 +12,10 @@ Reflect.ownKeys(mapActions).forEach((action) => {
                      if (action === '*') {  //访问不到对应的命令 就打印找不到命令
                             console.log(mapActions[action].description);
                      } else {
+                            green('👽 👽 👽 ' + '欢迎使用fairy-cli,轻松构建react ts项目～🎉🎉🎉')
                             // 分解命令 到文件里 有多少文件 就有多少配置 create config
                             // fairy-cli create project-name ->[node,fairy-cli,create,project-name]
-                            require(path.join(__dirname,`${String(action)}.ts`))(...process.argv.slice(3));
+                            require(path.join(__dirname, `${String(action)}.ts`))(...process.argv.slice(3));
                      }
               })
 });
