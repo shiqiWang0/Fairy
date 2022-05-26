@@ -15,6 +15,7 @@ const defaultConfig = {
 // 1).获取仓库列表
 const fetchReopLists = async () => {
     // 获取当前组织中的所有仓库信息,这个仓库中存放的都是项目模板
+    // todo 获取自己的仓库项目列表
     const { data } = await axios.get('https://api.github.com/orgs/lxy-cli/repos');
     return data;
 };
@@ -59,6 +60,7 @@ const createProTemp = async (proName, options) => {
     const spinner = ora(yellow('Loading ...')).start();
     setTimeout(() => {
         // 成功
+        // todo 拉取模版项目
         spinner.succeed('拉取成功');
     }, 1000);
 }
@@ -81,10 +83,10 @@ module.exports = async (proName, options) => {
     ]);
     blue(`overWrite: ${overWrite}`);
     if (overWrite) {
-        // 覆盖原有项目；
+        // todo 覆盖原有项目；
         red('覆盖原有项目，并开始拉取！')
     } else {
-        // 提示项目重名，并且重新创建新的项目名
+        // todo 提示项目重名，并且重新创建新的项目名
         red('项目名称已经存在，请重新创建项目！')
 
     }
